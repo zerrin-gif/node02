@@ -1,12 +1,13 @@
 const express = require('express')
-const myApp = express()
+const app = express()
+const port = 3000
 
-myApp.get('/',(req,res)=>{
-    res.send('Hello world from ExpressJS...');
-});
+app.set('view engine','pug')
 
-myApp.get('/About',(req,res)=>{
-    res.send('Hello world from About Page in ExpressJS...');
-});
+// app.get('/', (req, res) => res.send('Hello World!'))
+// app.get('/', (req, res) => res.render('index.pug'))
+app.get('/', (req, res) => res.render('index',{name:'Annetta',phone:'(301) 872-0524'}))
+app.get('/home',(request,response)=>{response.render('home.pug')})
+app.get('/contact',(req,res)=>{res.render('contact')})
 
-myApp.listen(3001,()=>{console.log('Express Server Running...')})
+app.listen(port, () => console.log(`Example app listening on port port!`))
